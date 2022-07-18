@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body id="body">
+    <div>
+        <form action="/autenticar" method="post">
+            <span><input type="text" name="nome" placeholder="Usuario"></span>
+            <span><input type="password" name="senha" placeholder="Senha"></span>
+            <span><input type="submit" value="Entrar"></span>
+            <span><a href="/cadastro" id="cv">Cadastrar vendedor</a></span>
+        </form>
+    </div>
+    <script src="/script/script.js"></script>
+    <script>
+        if(location.href.indexOf('sucesso') != -1){
+            alert('Vendedor cadastrado com sucesso!');
+        }
+        if(location.href.indexOf('userFail') != -1){
+            alert('User');
+        }
+        if(location.href.indexOf('senhaFail') != -1){
+            alert('Senha');
+        }
+    </script>
+</body>
+</html>
