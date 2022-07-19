@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
     <title>Cadastro</title>
 </head>
 <body>
     <h1>Cadastrar Vendedor</h1>
     <div>
         <form action="<%= action %>" method="post">
-            <span><input type="text" name="nome" placeholder="Nome Completo"></span>
-            <span><input type="password" name="senha" placeholder="Senha"></span>
-            <span><input type="password" name="senhaAdm" placeholder="Senha ADM"></span>
-            <span><input type="submit" value="Cadastrar"></span>
+            <span><input type="text" name="nome" placeholder="Nome Completo" class="inptText"></span>
+            <span><input type="password" name="senha" placeholder="Senha" class="inptText"></span>
+            <span><input type="password" name="senhaAdm" placeholder="Senha ADM" class="inptText"></span>
+            <span><input type="submit" value="Cadastrar" class="btn"></span>
             <span><a href="/">Cancelar</a></span>
         </form>
     </div>

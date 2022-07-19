@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="/style/style.css">
 </head>
-<body id="body">
-    <div>
+<body>
+    <div class="form">
         <form action="/autenticar" method="post">
-            <span><input type="text" name="nome" placeholder="Usuario"></span>
-            <span><input type="password" name="senha" placeholder="Senha"></span>
-            <span><input type="submit" value="Entrar"></span>
+            <span><input type="text" name="nome" placeholder="Vendedor" class="inptText"></span>
+            <span><input type="password" name="senha" placeholder="Senha" class="inptText"></span>
+            <span><input type="submit" value="Entrar" class="btn"></span>
             <span><a href="/cadastro" id="cv">Cadastrar vendedor</a></span>
         </form>
     </div>
