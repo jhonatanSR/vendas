@@ -1,6 +1,7 @@
 const express = require('express');
 const rota = express.Router();
 const db = require('../db.js');
+const bcrypt = require('bcrypt');
 
 rota.get('/', async (req,res) =>{
     const adm = await db.find({nome:"jhon"});
@@ -13,31 +14,45 @@ rota.get('/cadastro', async(req,res,next) =>{
 /********************************************************/
 
 rota.post('/cadastro', async(req,res) =>{
-    const {nome,senha,senhaAdm} = req.body;
-    const adm = await db.find({nome:"jhon"});
+    const dados = req.body;
+    const nome = dados.nome;
+    let senha = dados.senha;
+    let senhaAdm = dados.senhaAdm;
+    const senhaHash = bcrypt.hashSync(senha,10);
+    const admHash = bcrypt.hashSync(senhaAdm,10);
+    const adm = await db.find({nome:"Jhonatan"}); 
     
-    if(senhaAdm == adm.senhaADM){
-        if(await db.find({nome})){
-        return res.status(400).send({erro: "Usuario ja existe!"});
-        }else{
-            await db.insert({nome,senha});
+    if(bcrypt.compareSync(senhaAdm, adm.senhaAdm)){
+       if(nome === adm.nome){
+        return res.redirect('/cadastro?userE')
         }
-    }else if(senhaAdm == "" || senhaAdm != adm.senhaADM){
-      return res.redirect("/cadastro?fail");
     }
+    if(senha=="" || !(bcrypt.compareSync(senhaAdm, adm.senhaAdm))){
+        return res.redirect('/cadastro?fail');
+    }
+    senha = senhaHash;
+    await db.insert({nome,senha});
+
     res.redirect('/?sucesso');
 })
 
 rota.post('/autenticar', async(req,res) =>{
-    const {nome,senha} = req.body;
+    const nome = req.body.nome;
+    const senha = req.body.senha;
     const usuario = await db.find({nome});
+    const deu = bcrypt.compareSync(senha, usuario.senha);
     if(!usuario){
         return res.redirect('/?userFail');
-    }
-    if(usuario.senha != senha){
+    }   
+
+    if(!(deu)){
         return res.redirect('/?senhaFail');
     }
+        
+    
+
     res.send(usuario);
+    
 })
 
 module.exports = rota;
