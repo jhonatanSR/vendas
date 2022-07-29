@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const db = require('./db.js');
+//const db = require('./db.js');
 const bodyParser = require('body-parser');
 const port = 3000;
 const rota = require('./rotas/index.js');
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
