@@ -6,14 +6,14 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <h1>Cadastrar Vendedor</h1>
-    <div>
+    <div class="form formCad">
+        <h1>Cadastrar Vendedor</h1>
         <form action="<%= action %>" method="post">
-            <span><input type="text" name="nome" placeholder="Nome Completo" class="inptText"></span>
-            <span><input type="password" name="senha" placeholder="Senha" class="inptText"></span>
-            <span><input type="password" name="senhaAdm" placeholder="Senha ADM" class="inptText"></span>
-            <span><input type="submit" value="Cadastrar" class="btn"></span>
-            <span><a href="/">Cancelar</a></span>
+            <input type="text" name="nome" placeholder="Nome Completo" class="inptText inptTextCad" required><br>
+            <input type="password" name="senha" placeholder="Senha" class="inptText inptTextCad" required><br>
+            <input type="password" name="senhaAdm" placeholder="Senha ADM" class="inptText inptTextCad" required><br>
+            <input type="submit" value="Cadastrar" class="btn btnCad">
+            <a href="/"><input type="button" value="Cancelar" class="btn btnCad"></a>
         </form>
     </div>
     <script>if(location.href.indexOf('fail') != -1){

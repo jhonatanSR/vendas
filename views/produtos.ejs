@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form formProd">
+        <div class="pesquisar">
+            <form action="/findProd/<%= id %>" method="post">
+                <input type="search" name="procurar" placeholder="pesquisar produto" autofocus class="btn btnProd" pattern="[a-zA-z0-9]+">
+                <a href="/inicio/<%= id %>"><input type="button" value="Voltar" class="btn"></a>
+            </form>
+        </div>
+        <table class="tabelaProd" id="ordenado">
+            <thead>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>QTD</th>
+                <th>Cód</th>
+                <th>Açôes</th>
+            </thead>
+            <tbody>
+                <% item1.forEach(function(produto){ %>
+                <tr>
+                    <td><%= produto.produto %></td>
+                    <td><R1>R$ <%= produto.preco %></R1></td>
+                    <td><%= produto.quantidade %></td>
+                    <td><%= produto.codigo %></td>
+                    <td><a href="/editarP/<%= id %>?item=<%= produto._id %>">Editar</a><br><a href="/deleteP/<%= id %>?produto=<%= produto._id %>">Excluir</a></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

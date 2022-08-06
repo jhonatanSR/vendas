@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <div class="form">
+        <h1>Cadastro de produto</h1>
+        <form action="<%= action %>" method="post">
+            <input type="text" name="produto" placeholder="Nome do Produto" class="inptText inptTextCadP" required autofocus value="<%= doc.produto %>"><br>
+            <input type="number" step="any" name="preco" placeholder="Preço R$" class="inptText inptTextCadP" required value="<%= doc.preco %>"><br>
+            <input type="number" name="qtd" placeholder="Quantidade" class="inptText inptTextCadP" required value="<%= doc.quantidade %>"><br>
+            <input type="number" name="cod" placeholder="Código do Produto" class="inptText inptTextCadP" required value="<%= doc.codigo %>"><br>
+            <input type="submit" value="Cadastrar" class="btn btnCadP">
+            <a href="/inicio/<%= id %>"><input type="button" value="Cancelar" class="btn btnCadP"></a>
+        </form>
+    </div>
+</body>
+</html>

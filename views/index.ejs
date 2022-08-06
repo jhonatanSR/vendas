@@ -7,11 +7,11 @@
 </head>
 <body>
     <div class="form">
-        <form action="/autenticar" method="post">
-            <span><input type="text" name="nome" placeholder="Vendedor" class="inptText"></span>
-            <span><input type="password" name="senha" placeholder="Senha" class="inptText"></span>
-            <span><input type="submit" value="Entrar" class="btn"></span>
-            <span><a href="/cadastro" id="cv">Cadastrar vendedor</a></span>
+        <form action="/autenticar" method="post" class="form">
+            <input type="text" name="nome" placeholder="Vendedor" class="inptText inptTextInd" required>
+            <input type="password" name="senha" placeholder="Senha" class="inptText inptTextInd" required><br>
+            <input type="submit" value="Entrar" class="btn btnIndex" ><br>
+            <a href="/cadastro"><input type="button" value="Cadastrar Vendedor" class="btn btnIndex"></a>
         </form>
     </div>
     <script src="/script/script.js"></script>
@@ -27,6 +27,9 @@
         }
         if(location.href.indexOf('token=expirou')!= -1){
             alert('Token expirou!');
+        }
+        if(location.href.indexOf('vazio') != -1){
+            alert('Informe o usuario');
         }
     </script>
 </body>
