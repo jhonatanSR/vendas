@@ -5,8 +5,9 @@
     <link rel="stylesheet" href="/style/style.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="horas()">
     <div class="form formProd">
+        <span class="hora" id="hora">hora</span>
         <div class="pesquisar">
             <form action="/findProd/<%= id %>" method="post">
                 <input type="search" name="procurar" placeholder="pesquisar produto" autofocus class="btn btnProd" pattern="[a-zA-z0-9]+">
@@ -34,5 +35,23 @@
             </tbody>
         </table>
     </div>
+    <script>
+        const hora = document.getElementById("hora");
+        function horas(){
+            const horario = new Date();
+            let h = horario.getHours();
+            let m = horario.getMinutes();
+            let s = horario.getSeconds();
+            if(m < 10){
+                hora.innerText = `HORÁRIO: ${h}:0${m}:${s}`;
+            }else if(s < 10){
+                hora.innerText = `HORÁRIO: ${h}:${m}:0${s}`;
+            }
+            else{
+                hora.innerText = `HORÁRIO: ${h}:${m}:${s}`;
+            }
+            setTimeout('horas()',1000);
+        }
+    </script>
 </body>
 </html>

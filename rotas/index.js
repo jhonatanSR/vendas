@@ -60,6 +60,15 @@ rota.get('/editarP/:id',verificaJWT,async(req,res)=>{
     res.render('cadastroP',{doc: await db.findOneP(item),action:"/updateP/"+id+"?item="+item,id});
 })
 
+rota.get('/caixa/:id',verificaJWT,async(req,res)=>{
+    const id = req.params.id;
+    const doc = await db.findOne(id);
+    const item = req.query.item;
+    const item1 = await db.procurarP(item);
+    const produto = req.query.produto;
+    const item2 = await db.findOneP(produto);
+    res.render('caixa',{doc,id,item1,item2});
+})
 /********************************************************/
 
 rota.post('/cadastro', async(req,res) =>{
@@ -149,6 +158,12 @@ rota.post('/findProd/:id', async(req,res)=>{
     res.redirect('/produtos/'+id+"?item="+item);
 
 
+})
+rota.post('/caixaFindProd/:id', async(req,res)=>{
+    const id = req.params.id;
+    const produto = req.body.procurar;
+    const item = produto.toUpperCase();
+    res.redirect('/caixa/'+id+"?item="+item);
 })
 
 

@@ -9,16 +9,16 @@ a{
     color: black;
 }
 div.formProd::-webkit-scrollbar {
-    width: 8px;               /* width of the entire scrollbar */
+    width: 8px;               
   }
 div.formProd::-webkit-scrollbar-track {
-    background: gold;        /* color of the tracking area */
-    /*border-bottom-right-radius: 10px;*/
+    background: gold;
     border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 div.formProd::-webkit-scrollbar-thumb {
-    background-color: black;    /* color of the scroll thumb */
-    border: 3px solid gold;  /* creates padding around scroll thumb */
+    background-color: black;
+    border: 3px solid gold;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
   }
@@ -162,4 +162,45 @@ table.tabelaProd td{
 
 input.btnProd:focus{
     outline-style: none;
+}
+
+/* CAIXA */
+
+div.vendas{
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    margin-left: 20px;
+    overflow-y:auto;
+}
+p.nCaixa{
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: gold;
+}
+
+aside{
+    overflow-y: scroll;
+    background-color: rgb(74, 74, 126);
+    width: 350px;
+    height: 300px;
+    position:absolute;
+    margin-left: 440px;
+    margin-top: -300px;
+}
+
+div.preco{
+    background-color: brown;
+    position:absolute;
+    margin-left: 250px;
+}
+
+span.hora{ 
+    display: flex;
+    position: absolute;
+    float: left;
+
+    margin-left: 20px;
+
 }

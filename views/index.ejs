@@ -5,8 +5,9 @@
     <title>Login</title>
     <link rel="stylesheet" href="/style/style.css">
 </head>
-<body>
+<body onload="horas()">
     <div class="form">
+        <span class="hora" id="hora">hora</span>
         <form action="/autenticar" method="post" class="form">
             <input type="text" name="nome" placeholder="Vendedor" class="inptText inptTextInd" required>
             <input type="password" name="senha" placeholder="Senha" class="inptText inptTextInd" required><br>
@@ -16,6 +17,23 @@
     </div>
     <script src="/script/script.js"></script>
     <script>
+        const hora = document.getElementById("hora");
+        function horas(){
+            const horario = new Date();
+            let h = horario.getHours();
+            let m = horario.getMinutes();
+            let s = horario.getSeconds();
+            if(m < 10){
+                hora.innerText = `HORÁRIO: ${h}:0${m}:${s}`;
+            }else if(s < 10){
+                hora.innerText = `HORÁRIO: ${h}:${m}:0${s}`;
+            }
+            else{
+                hora.innerText = `HORÁRIO: ${h}:${m}:${s}`;
+            }
+            setTimeout('horas()',1000);
+        }
+        
         if(location.href.indexOf('sucesso') != -1){
             alert('Vendedor cadastrado com sucesso!');
         }

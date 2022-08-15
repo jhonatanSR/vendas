@@ -5,8 +5,9 @@
     <link rel="stylesheet" href="/style/style.css">
     <title>Cadastro</title>
 </head>
-<body>
+<body onload="horas()">
     <div class="form formCad">
+        <span class="hora" id="hora">hora</span>
         <h1>Cadastrar Vendedor</h1>
         <form action="<%= action %>" method="post">
             <input type="text" name="nome" placeholder="Nome Completo" class="inptText inptTextCad" required><br>
@@ -16,12 +17,30 @@
             <a href="/"><input type="button" value="Cancelar" class="btn btnCad"></a>
         </form>
     </div>
-    <script>if(location.href.indexOf('fail') != -1){
+    <script>
+        const hora = document.getElementById("hora"); 
+        function horas(){
+            const horario = new Date();
+            let h = horario.getHours();
+            let m = horario.getMinutes();
+            let s = horario.getSeconds();
+            if(m < 10){
+                hora.innerText = `HORÁRIO: ${h}:0${m}:${s}`;
+            }else if(s < 10){
+                hora.innerText = `HORÁRIO: ${h}:${m}:0${s}`;
+            }
+            else{
+                hora.innerText = `HORÁRIO: ${h}:${m}:${s}`;
+            }
+            setTimeout('horas()',1000);
+        }
+
+        if(location.href.indexOf('fail') != -1){
         alert('Você não tem permissão!');
-    }
-    if(location.href.indexOf('userE')!= -1){
+        }
+        if(location.href.indexOf('userE')!= -1){
         alert("Usuario já existe!");
-    }
+        }
     </script>
 
 </body>

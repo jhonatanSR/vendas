@@ -5,18 +5,35 @@
     <link rel="stylesheet" href="/style/style.css">
     <title>Document</title>
 </head>
-<body>  
+<body onload="horas()">  
     <div class="form">
+        <span class="hora" id="hora">hora</span>
         <div class="ini"><h1>NOME DA EMPRESA</h1></div>
         <form action="<%= action %>" method="post">
-            <input type="button" value="Caixa" class="btn btnIni">
+            <a href="/caixa/<%= doc._id %>"><input type="button" value="Caixa" class="btn btnIni"></a>
             <a href="/produtos/<%= doc._id %>"><input type="button" value="Produtos" id="btnProdutos" class="btn btnIni"></a>
             <a href="/cadastroP/<%= doc._id %>"><input type="button" value="Cadastrar Produto" class="btn btnIni"></a>
             <input type="submit" value="Sair" class="btn btnIni">
        </form>
        <div class="nomeCaixa"><p>Nome do caixa: <%= doc.nome %></p></div>
     </div>
-    
-    <script src="/script/script.js"></script>
+    <script>
+        const hora = document.getElementById("hora");
+        function horas(){
+            const horario = new Date();
+            let h = horario.getHours();
+            let m = horario.getMinutes();
+            let s = horario.getSeconds();
+            if(m < 10){
+                hora.innerText = `HORÁRIO: ${h}:0${m}:${s}`;
+            }else if(s < 10){
+                hora.innerText = `HORÁRIO: ${h}:${m}:0${s}`;
+            }
+            else{
+                hora.innerText = `HORÁRIO: ${h}:${m}:${s}`;
+            }
+            setTimeout('horas()',1000);
+        }
+    </script>
 </body>
 </html>

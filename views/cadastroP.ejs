@@ -5,8 +5,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="/style/style.css">
 </head>
-<body>
+<body onload="horas()">
     <div class="form">
+        <span class="hora" id="hora">hora</span>
         <h1>Cadastro de produto</h1>
         <form action="<%= action %>" method="post">
             <input type="text" name="produto" placeholder="Nome do Produto" class="inptText inptTextCadP" required autofocus value="<%= doc.produto %>"><br>
@@ -17,5 +18,23 @@
             <a href="/inicio/<%= id %>"><input type="button" value="Cancelar" class="btn btnCadP"></a>
         </form>
     </div>
+    <script>
+        const hora = document.getElementById("hora");
+        function horas(){
+            const horario = new Date();
+            let h = horario.getHours();
+            let m = horario.getMinutes();
+            let s = horario.getSeconds();
+            if(m < 10){
+                hora.innerText = `HORÁRIO: ${h}:0${m}:${s}`;
+            }else if(s < 10){
+                hora.innerText = `HORÁRIO: ${h}:${m}:0${s}`;
+            }
+            else{
+                hora.innerText = `HORÁRIO: ${h}:${m}:${s}`;
+            }
+            setTimeout('horas()',1000);
+        }
+    </script>
 </body>
 </html>

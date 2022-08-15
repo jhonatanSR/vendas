@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body onload="horas()">
+    <div class="form">
+        <span class="hora" id="hora">hora</span>
+        <h1>Caixa</h1>
+        <div class="vendas" id="vendas">
+            <p id="prdt"></p>
+        </div>
+        <div class="preco" id="preco">Total: R$0</div>
+        <aside>
+            <table class="tabelaProd" id="ordenado">
+                <thead>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Açôes</th>
+                </thead>
+                <tbody id="corpo">
+                    <% item1.forEach(function(produto){ %>
+                    <tr>
+                        <td><%= produto.produto %></td>
+                        <td><%= produto.preco %></td>
+                        <td><input type="button" value="Comprar" name="<%= produto.produto %>" id="<%= produto.preco %>" onclick="btn(this.name, this.id)"></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </aside>
+        <p class="nCaixa">Nome do Caixa: <%= doc.nome %></p>
+        <a href="/inicio/<%= id %>"><input type="button" value="Voltar" class="btn"></a>
+        <input type="button" value="Finalizar" class="btn" onclick="finalizar()">
+    </div>
+    <script>
+            const vendas = document.getElementById("vendas");
+            const prdt = document.getElementById("prdt");
+            const preco = document.getElementById("preco");
+            const hora = document.getElementById("hora");            
+
+        function btn(produto,valor){
+            const preco2 = preco.outerText.slice(9,20);
+            const preco3 = parseFloat(preco2);
+            let novoElemento = document.createElement('p');
+            novoElemento.innerText = `${produto}| R$${valor}`;
+            vendas.insertBefore(novoElemento, prdt);
+            const teste = preco3;
+            const teste2 = teste + Number(valor);
+            let teste3 = teste2.toFixed(2);
+            preco.innerText = `Total: R$${teste3}`;
+
+        }
+
+        function finalizar() {
+            alert(`Muito Obrigado volte sempre!
+
+            TOTAL DA COMPRA: ${preco.outerText.slice(9,20)}`)
+        }
+
+        function horas(){
+            const horario = new Date();
+            let h = horario.getHours();
+            let m = horario.getMinutes();
+            let s = horario.getSeconds();
+            if(m < 10){
+                hora.innerText = `HORÁRIO: ${h}:0${m}:${s}`;
+            }else if(s < 10){
+                hora.innerText = `HORÁRIO: ${h}:${m}:0${s}`;
+            }
+            else{
+                hora.innerText = `HORÁRIO: ${h}:${m}:${s}`;
+            }
+            setTimeout('horas()',1000);
+        }
+    </script>
+</body>
+</html>
